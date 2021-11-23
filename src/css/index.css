@@ -1,0 +1,13 @@
+/* Section description générale */
+#description {
+    color: navy;
+    background-color: rgba(0, 119, 255, .1);
+
+}
+
+/* Section infos pratiques */
+#infos {
+    color: midnightblue;
+    background-color: rgba(0, 119, 255, .1);
+
+}
