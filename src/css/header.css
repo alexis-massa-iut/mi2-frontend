@@ -1,39 +1,49 @@
-/* Body prend toute la hauteur */
-html,
+/* couleur de fond */
 body {
-    height: 100%;
-}
-
-/* Centrer body + couleur de fond */
-html {
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: lightblue;
-}
-
-/* Centrer body + couleur de fond */
-body {
-    display: table-cell;
-    /* vertical-align: middle; */
     background-color: aliceblue;
-    box-shadow: 0px 0px 40px 18px aliceblue;
+}
+
+main {
+    margin-top: 100px;
 }
 
 /* Navigation */
 nav {
+    position: fixed;
+    top: 0;
     width: 100%;
-    align-content: center;
 }
 
-menuitem > a {
+#menu-container {
+    display: flex;
+    justify-content: space-evenly;
+    vertical-align: middle;
+}
+
+.menuitem {
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    display: inline;
+    width: 100%;
+    background: linear-gradient(-45deg, #788cff, #b4c8ff);
+}
+
+.menuitem {
     color: blueviolet;
     text-decoration: none;
 }
 
-menuitem > a:hover {
+h2.menuitem {
+    background: linear-gradient(-45deg, #556eff, #9ab5ff);
+}
+div.menuitem:hover {
     font-weight: bold;
     text-decoration: underline;
+}
+
+div.menuitem:active {
+    background: linear-gradient(-45deg, #83ff78, #d0ffb4);
 }
 
 /* Headers */
@@ -46,8 +56,8 @@ h4 {
 
 h1 {
     color: blue;
-    background-color: rgba(159, 43, 226, .3);
-    box-shadow: 0px 0px 20px 9px rgba(159, 43, 226, .2);
+    background-color: rgba(159, 43, 226, 0.3);
+    box-shadow: 0px 0px 20px 9px rgba(159, 43, 226, 0.2);
 }
 
 h2 {
