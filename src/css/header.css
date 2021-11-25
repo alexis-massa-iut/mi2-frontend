@@ -14,36 +14,62 @@ nav {
     width: 100%;
 }
 
-#menu-container {
+/* flex */
+.menu-container {
     display: flex;
     justify-content: space-evenly;
     vertical-align: middle;
 }
 
-.menuitem {
+.menuitem, .menu-title {
     text-align: center;
+    width: 100%;
     margin: 0;
     padding: 5px;
     display: inline;
-    width: 100%;
-    background: linear-gradient(-45deg, #788cff, #b4c8ff);
-}
-
-.menuitem {
+    background: linear-gradient(-45deg, #788cff, #b4c8ff); /* gradient principal */
     color: blueviolet;
     text-decoration: none;
 }
 
-h2.menuitem {
-    background: linear-gradient(-45deg, #556eff, #9ab5ff);
+.menu-title {
+    background: linear-gradient(-45deg, #ce78ff, #f3b4ff); /* gradient principal */
 }
-div.menuitem:hover {
+
+.menuitem:hover {
     font-weight: bold;
     text-decoration: underline;
 }
 
-div.menuitem:active {
-    background: linear-gradient(-45deg, #83ff78, #d0ffb4);
+.menuitem:active, #current {
+    background: linear-gradient(-45deg, #83ff78, #d0ffb4); /* couleur onglet actif */
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    text-decoration: none;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a,
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.menuitem:hover, .dropdown-content a:hover {
+    background: linear-gradient(-45deg, #556eff, #9ab5ff); /* gradient foncé */
 }
 
 /* Headers */
