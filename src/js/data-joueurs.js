@@ -37,13 +37,13 @@ var json_joueurs = [
     }
 ];
 
-window.onload = () => {
-    displayJoueurs(json_joueurs);
-}
+// window.onload = () => {
+    
+// }
 
 /**
- * Ajoute un joueur au tableau
- * @param {*} joueur le joueur à ajouter
+ * Affiche le tableau des joueurs
+ * @param {Array} joueurs les joueurs à afficher
  */
 function displayJoueurs(joueurs) {
     document.getElementById('data').innerHTML = '';
@@ -52,7 +52,7 @@ function displayJoueurs(joueurs) {
         document.getElementById('data').innerHTML += `
     <tr>
         <td class="name">${joueur.name}</td>
-        <td class="image" ><img id="pic" src=${joueur.image.src}" alt="${joueur.image.alt}"></td>
+        <td class="image" ><img id="pic" src="${joueur.image.src}" alt="${joueur.image.alt}"></td>
         <td class="position">${joueur.position}</td>
         <td class="description">${joueur.description}</td>
         <td><button class="agrandir">Agrandir</button></td>
