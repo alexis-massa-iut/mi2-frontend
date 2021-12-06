@@ -31,11 +31,11 @@ img {
     height: 150px;
 }
 
-/* Bouton agrandir */
-button {
-    background-color: #008cba; /* Blue */
-    border: none;
-    color: white;
+/* Boutons action */
+button.action {
+    background-color: white; /* White */
+    border: 2px solid #008cba; /* Blue */
+    color: black; /* Black */
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
@@ -46,13 +46,7 @@ button {
     cursor: pointer;
 }
 
-.agrandir {
-    background-color: white;
-    color: black;
-    border: 2px solid #008cba;
-}
-
-.agrandir:hover {
-    background-color: #008cba;
-    color: white;
+button.action:hover {
+    background-color: #008cba; /* Blue */
+    color: white; /* White */
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/joueurs.css">
     <script src="js/header.js"></script>
+    <script src="js/data-joueurs.js" defer></script>
     <title>TP1 | Club de sport</title>
 </head>
 
@@ -15,13 +16,17 @@
     <main>
         <h1>Joueurs du club</h1>
         <hr>
-        <form id="form">
+        <br>
+        <form id="form-ajouter">
             <label for="name">Nom</label><input id="name" type="text" name="name" required>
             <label for="image">Image source</label><input id="image" type="text" name="image">
             <label for="position">Poste</label><input id="position" type="text" name="position" required>
             <label for="description">Description</label><input id="description" type="text" name="description" required>
             <input type="submit" value="Ajouter">
         </form>
+        <br>
+        <hr>
+        <br>
         <table id="joueurs">
             <thead>
                 <tr>
@@ -33,9 +38,6 @@
                 </tr>
             </thead>
             <tbody id="data">
-                <!-- LOAD JOUEURS -->
-                <script src="js/data-joueurs.js"></script>
-                <script>displayJoueurs(json_joueurs);</script>
             </tbody>
 
             <tfoot></tfoot>

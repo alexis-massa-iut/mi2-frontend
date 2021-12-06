@@ -33,13 +33,13 @@ var json_joueurs = [
             "alt": "image de P. Jacques"
         },
         "position": "Pivot",
-        "description": "Joueur qui boit le plus la tasse, fait baisser le niveau de l'eau de 3cm par match (environ)."
+        "description": "Joueur qui boit le plus la tasse. A cause de lui, tout le monde a pieds à partir de la 5ème mi-temps."
     }
 ];
 
-// window.onload = () => {
-    
-// }
+window.addEventListener("load", () => {
+    displayJoueurs(json_joueurs);
+});
 
 /**
  * Affiche le tableau des joueurs
@@ -48,19 +48,27 @@ var json_joueurs = [
 function displayJoueurs(joueurs) {
     document.getElementById('data').innerHTML = '';
     joueurs.forEach(joueur => {
-        
+
         document.getElementById('data').innerHTML += `
     <tr>
         <td class="name">${joueur.name}</td>
-        <td class="image" ><img id="pic" src="${joueur.image.src}" alt="${joueur.image.alt}"></td>
+        <td class="image"><img id="pic" src="${joueur.image.src}" alt="${joueur.image.alt}"></td>
         <td class="position">${joueur.position}</td>
         <td class="description">${joueur.description}</td>
-        <td><button class="agrandir">Agrandir</button></td>
+        <td>
+            <button class="action" onclick="modifierJoueur(\'${joueur}\')">Modifier</button>
+            <button class="action" onclick="retirerJoueur(\'${joueur.name}\')">Retirer</button>
+        </td>
     </tr>`;
     });
 }
 
-document.getElementById('form').addEventListener("submit", () => {
+/**
+ * Crée un objet joueur avec les informations du formulaire
+ * Ajoute le joueur au tableau
+ * Met à jour le tableau (affichage)
+ */
+document.getElementById('form-ajouter').addEventListener("submit", () => {
     event.preventDefault();
     var joueur = {
         name: document.getElementById('name').value,
@@ -74,3 +82,25 @@ document.getElementById('form').addEventListener("submit", () => {
     json_joueurs.push(joueur);
     displayJoueurs(json_joueurs);
 });
+
+/**
+ * Récupère le champ name (caché)
+ * Parcourt le tableau des joueurs et retire si le nom correspond
+ * /!\ Si plusieurrs joueurs ont le même nom, ils seront tous retirés /!\
+ * Met à jour le tableau (affichage)
+ * @param {String} name nom du joueur à retirer
+ */
+function retirerJoueur(name) {
+    for (let i = 0; i < json_joueurs.length; i++) {
+        if (json_joueurs[i].name == name) json_joueurs.splice(i, 1);
+    }
+    displayJoueurs(json_joueurs);
+};
+
+/**
+ * Modifier un joueur
+ * @param {Object} joueur le joueur à modifier
+ */
+function modifierJoueur(joueur){
+    // TODO
+}

@@ -1,19 +1,20 @@
 const menus = [
-    { link: './index.html', title: 'Accueil' },
-    { link: './joueurs.html', title: 'Joueurs' },
+    { link: './index.html', title: 'Accueil', page: 'index.html' },
+    { link: './joueurs.html', title: 'Joueurs', page: 'joueurs.html' },
     {
-        link: './perso.html', title: 'Espace perso', submenu: [
-            { link: '#', title: 'Connexion' },
-            { link: '#', title: 'Mes informations' },
-            { link: '#', title: 'Messagerie' },
-            { link: '#', title: 'Historique' }
+        link: './perso.html', title: 'Espace perso', page: 'perso.html', submenu: [
+            { link: './perso.html#connexion', title: 'Connexion' },
+            { link: './perso.html#mes-infos', title: 'Mes informations' },
+            { link: './perso.html#messagerie', title: 'Messagerie' },
+            { link: './perso.html#historique', title: 'Historique' }
         ]
     },
-    { link: './ambiance_match.html', title: 'Ambiance' },
-    { link: './moments_forts.html', title: 'Moments' },
-    { link: './contact.html', title: 'Contact' }
-]; 
-window.onload = () => {
+    { link: './ambiance_match.html', title: 'Ambiance', page: 'ambiance_match.html' },
+    { link: './moments_forts.html', title: 'Moments', page: 'moments_forts.html' },
+    { link: './contact.html', title: 'Contact', page: 'contact.html' }
+];
+
+window.addEventListener("load", () => {
     var headers = document.getElementsByTagName('header');
     var header = headers[0];
     var nav = document.createElement('nav');
@@ -38,11 +39,12 @@ window.onload = () => {
         container.appendChild(createA(item));
     });
 
-    nav.appendChild(container);
-    header.appendChild(nav);
-    console.log(header);
 
-}
+    nav.appendChild(container);
+    console.log(nav);
+    header.appendChild(nav);
+
+});
 
 // TEMPLATE a
 /**
@@ -51,21 +53,27 @@ window.onload = () => {
  */
 function createA(item) {
     let a = document.createElement('a');
-    a.id = '';
-    a.className = 'menuitem';
+    a.id = window.location.href.includes(item.page) ? 'current' : '';
     a.href = item.link;
-    if (item.submenu) {
-        a.className += ' dropdown-btn';
-        let div = document.createElement('div');
-        div.className = 'dropdown menuitem';
-        item.submenu.forEach(subitem => {
-            div.appendChild(createA(subitem));
-        });
-    }
-
     var h2 = document.createElement('h2');
     h2.appendChild(document.createTextNode(item.title));
-    a.appendChild(h2);
+    if (item.submenu) {
+        a.className += 'dropdown-btn menuitem';
+        let div = document.createElement('div');
+        div.className = 'dropdown';
+        div.appendChild(h2);
+        let submenu = document.createElement('div');
+        submenu.id = 'submenu-perso';
+        submenu.className = 'dropdown-content';
+        item.submenu.forEach(subitem => {
+            submenu.appendChild(createA(subitem));
+        });
+        div.appendChild(submenu)
+        a.appendChild(div);
+    } else {
+        a.className = 'menuitem';
+        a.appendChild(h2);
+    }
 
     return a;
 }
