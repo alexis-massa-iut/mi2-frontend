@@ -41,7 +41,6 @@ window.addEventListener("load", () => {
 
 
     nav.appendChild(container);
-    console.log(nav);
     header.appendChild(nav);
 
 });

@@ -56,7 +56,7 @@ function displayJoueurs(joueurs) {
         <td class="position">${joueur.position}</td>
         <td class="description">${joueur.description}</td>
         <td>
-            <button class="action" onclick="modifierJoueur(\'${joueur}\')">Modifier</button>
+            <button class="action" onclick="modifierJoueur(\'${joueur.name}\')">Modifier</button>
             <button class="action" onclick="retirerJoueur(\'${joueur.name}\')">Retirer</button>
         </td>
     </tr>`;
@@ -99,8 +99,21 @@ function retirerJoueur(name) {
 
 /**
  * Modifier un joueur
- * @param {Object} joueur le joueur à modifier
+ * @param {String} old_name le joueur à modifier
  */
-function modifierJoueur(joueur){
-    // TODO
+function modifierJoueur(old_name){
+    for (let i = 0; i < json_joueurs.length; i++) {
+        if (json_joueurs[i].name == old_name) {
+            json_joueurs[i] = {
+                name: prompt("Nouveau nom : ", json_joueurs[i].name),
+                image: {
+                    src: prompt("Nouvelle image : ", json_joueurs[i].image.src),
+                    alt: `Image de ${this.name}`
+                },
+                position: prompt("Nouveau poste : ", json_joueurs[i].position),
+                description: prompt("Nouvelle description : ", json_joueurs[i].description)
+            }
+        }
+    }
+    displayJoueurs(json_joueurs);
 }
